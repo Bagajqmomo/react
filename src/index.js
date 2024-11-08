@@ -1,38 +1,45 @@
 import React from "react";
 import reactDOM from "react-dom/client";
 
+import "./index.css";
+
+const firstBook = {
+  author: "Bagajqmomo",
+  title: "Kim Minji is the best",
+  img: "./images/book-1.jpeg",
+};
+
+const secondBook = {
+  author: "Chang Yun",
+  title: "aespa is the best",
+  img: "./images/book-2.jpg",
+};
+
 const Booklist = () => {
   return (
-    <section>
-      <Book />
+    <section className="booklist">
+      <Book
+        title={firstBook.title}
+        author={firstBook.author}
+        img={firstBook.img}
+      />
+      <Book
+        title={secondBook.title}
+        author={secondBook.author}
+        img={secondBook.img}
+      />
     </section>
   );
 };
 
-const Book = () => {
+const Book = ({ img, title, author }) => {
   return (
-    <article>
-      <Image />
-      <Title />
-      <Author />
+    <article className="book">
+      <img src={img} alt={title} />
+      <h2>{title}</h2>
+      <h4>{author}</h4>
     </article>
   );
-};
-
-const Image = () => {
-  return (
-    <img
-      src="https://m.media-amazon.com/images/I/71AQWDUx1bL._SY466_.jpg"
-      alt="The Housemaid's Wedding: A Short Story "
-    />
-  );
-};
-
-const Title = () => {
-  return <h2>The Housemaid's Wedding: A Short Story </h2>;
-};
-const Author = () => {
-  return <h4>Author Name</h4>;
 };
 
 const root = reactDOM.createRoot(document.getElementById("root"));
