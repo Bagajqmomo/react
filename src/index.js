@@ -2,43 +2,25 @@ import React from "react";
 import reactDOM from "react-dom/client";
 
 import "./index.css";
-
-const firstBook = {
-  author: "Bagajqmomo",
-  title: "Kim Minji is the best",
-  img: "./images/book-1.jpeg",
-};
-
-const secondBook = {
-  author: "Chang Yun",
-  title: "aespa is the best",
-  img: "./images/book-2.jpg",
-};
+import { books } from "./books";
+import Book from "./Book";
 
 const Booklist = () => {
+  const getBook = (id) => {
+    const book = books.find((book) => book.id === id);
+    console.log(book);
+  };
   return (
-    <section className="booklist">
-      <Book
-        title={firstBook.title}
-        author={firstBook.author}
-        img={firstBook.img}
-      />
-      <Book
-        title={secondBook.title}
-        author={secondBook.author}
-        img={secondBook.img}
-      />
-    </section>
-  );
-};
-
-const Book = ({ img, title, author }) => {
-  return (
-    <article className="book">
-      <img src={img} alt={title} />
-      <h2>{title}</h2>
-      <h4>{author}</h4>
-    </article>
+    <>
+      <h1>Best Girl in The World</h1>
+      <section className="booklist">
+        {books.map((book, index) => {
+          return (
+            <Book {...book} key={book.id} getBook={getBook} index={index} />
+          );
+        })}
+      </section>
+    </>
   );
 };
 
